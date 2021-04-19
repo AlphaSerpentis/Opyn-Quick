@@ -23,9 +23,14 @@ contract FlashAction {
         _;
     }
 
-    function _feeCollection(uint256 _grossProfit) internal view returns(uint256 feeToCollect) {
-        feeToCollect = _grossProfit * operatingFee / 10000;
+    function _feeCollection(uint256 _grossProfit)
+        internal
+        view
+        returns (uint256 feeToCollect)
+    {
+        feeToCollect = (_grossProfit * operatingFee) / 10000;
     }
+
     function _onlyAdmin() internal view {
         require(msg.sender == admin, "FlashAction: Unauthorized");
     }
